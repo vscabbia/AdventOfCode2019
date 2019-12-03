@@ -4,54 +4,43 @@ using namespace std;
 #include <cstdlib>
 #include <fstream>
 
-
-float calculaMassaIndividual(string massa){
+float calculaMassaIndividual(string massa) {
     float temp;
     float massaConvertida = 0;
-    massaConvertida = stof(massa); 
-    temp = massaConvertida/3;
-    temp = floor(temp); 
+    massaConvertida = stof(massa);
+    temp = massaConvertida / 3;
+    temp = floor(temp);
     temp = temp - 2;
 
     return temp;
 }
 
-int main()
-{
+int main() {
     string linha;
     float total = 0;
     ifstream file;
     file.open("base.txt");
-    
 
-    if(file.is_open()){
-        
-        while (getline(file, linha)){
-          total += calculaMassaIndividual(linha);
-
-                   
+    if (file.is_open()) {
+        while (getline(file, linha)) {
+            total += calculaMassaIndividual(linha);
         }
-        
-    }else{
+
+    } else {
         cout << "Não abriu";
     }
 
-    printf("%.0f",total);
-  
-
-
+    printf("%.0f", total);
 
     return 0;
 }
-
-
 
 /* resolução completa com int
 
 int calculaMassaIndividual(int massa){
     int temp;
     temp = massa/3;
-    temp = floor(temp); 
+    temp = floor(temp);
     temp = temp - 2;
 
     return temp;
@@ -64,21 +53,30 @@ int main()
   ifstream file;
   file.open("base.txt");
   
+
+
+
   if(file.is_open()){
       
+
+
+
     while (getline(file, linha)){
-      int temp = stoi(linha); 
+      int temp = stoi(linha);
       int somaModulo = 0;
       do{
         temp = calculaMassaIndividual(temp);
         if(temp > 0){
           somaModulo += temp;
         }
-      }while(temp > 0); 
+      }while(temp > 0);
 
-      total += somaModulo;    
+      total += somaModulo;
     }
       
+
+
+
   }else{
     cout << "Não abriu";
   }
